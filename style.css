@@ -5,12 +5,11 @@
     --primary-light: #e8f5e9;    /* Fundo verde sutil */
     --secondary: #a1887f;        /* Marrom terra claro */
     --secondary-dark: #5d4037;   /* Marrom terra profundo */
-    --accent-sun: #fbc02d;       /* Amarelo sol/energia */
     --dark: #1a237e;             /* Azul escuro bio-tech */
     --light: #f1f8e9;            /* Fundo esverdeado suave */
     --white: #ffffff;
-    --shadow: 0 12px 40px rgba(27, 94, 32, 0.08);
-    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --shadow: 0 8px 24px rgba(27, 94, 32, 0.05);
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -28,16 +27,12 @@ body {
     overflow-x: hidden;
 }
 
-/* 2. LAYOUT DO HEADER COM ANIMAÇÃO DE GRADIENTE */
+/* 2. LAYOUT DO HEADER (CORRIGIDO: SEM CLIP-PATH BUGADO) */
 .main-header {
-    background: linear-gradient(-45deg, #0d5c1d, #1b5e20, #43a047, #2e7d32);
-    background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
     color: var(--white);
     text-align: center;
-    padding: 6rem 1.5rem;
-    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-    position: relative;
+    padding: 5rem 1.5rem 6rem 1.5rem;
 }
 
 .header-title {
@@ -45,7 +40,7 @@ body {
     font-weight: 800;
     letter-spacing: -0.5px;
     margin-bottom: 0.8rem;
-    animation: fadeInUp 1s ease-out;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .header-subtitle {
@@ -55,7 +50,7 @@ body {
     margin: 0 auto;
     font-weight: 400;
     color: #c8e6c9;
-    animation: fadeInUp 1.2s ease-out;
+    animation: fadeInUp 1s ease-out;
 }
 
 /* 3. ESTRUTURA DO CONTAINER */
@@ -67,23 +62,23 @@ body {
     z-index: 10;
 }
 
-/* 4. CARDS DAS SEÇÕES (EFEITO DE CRESCIMENTO) */
+/* 4. CARDS DAS SEÇÕES */
 .topic-section {
     background-color: var(--white);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2.5rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 3rem;
     box-shadow: var(--shadow);
-    border: 1px solid rgba(44, 186, 66, 0.1);
-    animation: sproutIn 0.8s cubic-bezier(0.1, 1, 0.1, 1) both;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    animation: fadeInUp 0.8s ease-out both;
 }
 
 .section-title {
     color: var(--primary);
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     border-bottom: 3px solid var(--primary-vibrant);
-    padding-bottom: 0.8rem;
-    margin-bottom: 2.2rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
     display: inline-block;
 }
 
@@ -91,65 +86,43 @@ body {
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.2rem;
+    gap: 2rem;
 }
 
-/* 6. CARDS INTERNOS (EFEITO VIVO E FLUTUANTE) */
+/* 6. CARDS INTERNOS (CORRIGIDO: BORDAS SUAVES E SEM CONFLITO DE CORES) */
 .info-card {
-    background: linear-gradient(145deg, var(--white), #f9fbe7);
+    background-color: #fbc02d05; /* Fundo leve */
     padding: 1.8rem;
-    border-radius: 16px;
-    border-top: 4px solid var(--secondary);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(161, 136, 127, 0.2); /* Borda fina marrom */
     transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Detalhe decorativo interno que simula uma folha ao passar o mouse */
-.info-card::before {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 40px;
-    height: 40px;
-    background: var(--primary-light);
-    border-radius: 50%;
-    transition: var(--transition);
-    z-index: 1;
 }
 
 .info-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px rgba(27, 94, 32, 0.12);
-    border-top-color: var(--primary-vibrant);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(27, 94, 32, 0.08);
+    border-color: var(--primary-vibrant);
+    background-color: var(--primary-light);
 }
 
-.info-card:hover::before {
-    width: 120px;
-    height: 120px;
-    background: rgba(44, 186, 66, 0.08);
-}
-
-/* Customização vibrante para o Lado Crítico (Alerta Energético) */
+/* Customização para a Seção Crítica (Vermelha) */
 .critical-section {
-    border: 1px solid rgba(211, 47, 47, 0.2);
+    border: 1px solid rgba(211, 47, 47, 0.1);
 }
+
 .critical-section .section-title {
-    color: #c62828;
+    color: #d32f2f;
     border-bottom-color: #ef5350;
 }
+
 .critical-section .info-card {
-    background: linear-gradient(145deg, var(--white), #fffde7);
-    border-top-color: #e53935;
+    border-color: rgba(211, 47, 47, 0.2);
 }
+
 .critical-section .info-card:hover {
-    border-top-color: #b71c1c;
-    box-shadow: 0 15px 30px rgba(211, 47, 47, 0.12);
-}
-.critical-section .info-card:hover::before {
-    background: rgba(211, 47, 47, 0.05);
+    border-color: #d32f2f;
+    background-color: #ffebee;
+    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.08);
 }
 
 .card-title {
@@ -157,19 +130,15 @@ body {
     font-size: 1.25rem;
     margin-bottom: 0.7rem;
     font-weight: 700;
-    position: relative;
-    z-index: 2;
 }
 
 .critical-section .card-title {
-    color: #d32f2f;
+    color: #c62828;
 }
 
 .card-text {
     font-size: 0.98rem;
     color: #455a64;
-    position: relative;
-    z-index: 2;
 }
 
 /* 7. LAYOUT DO FOOTER */
@@ -181,18 +150,7 @@ body {
     font-size: 1rem;
 }
 
-/* ==========================================================================
-   8. ANIMAÇÕES TEMÁTICAS (NATUREZA E CRESCIMENTO)
-   ========================================================================== */
-
-/* Animação do céu/bioma mudando suavemente no topo */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Entrada suave de baixo para cima (revelação de elementos) */
+/* 8. ANIMAÇÃO DE ENTRADA SUAVE */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -204,23 +162,10 @@ body {
     }
 }
 
-/* Animação que imita um broto saindo da terra (escala com leve balanço) */
-@keyframes sproutIn {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
 /* 9. RESPONSIVIDADE */
 @media (max-width: 768px) {
     .main-header {
-        padding: 5rem 1rem;
-        clip-path: none;
+        padding: 4rem 1rem 5rem 1rem;
     }
     
     .header-title {
@@ -228,7 +173,7 @@ body {
     }
 
     .content-container {
-        margin-top: 1.5rem;
+        margin-top: -2rem;
     }
 
     .topic-section {
