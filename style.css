@@ -1,0 +1,153 @@
+/* 1. VARIÁVEIS E CONFIGURAÇÕES GERAIS */
+:root {
+    --primary: #2e7d32;
+    --primary-light: #e8f5e9;
+    --secondary: #8d6e63;
+    --dark: #263238;
+    --light: #f8f9fa;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.7;
+    color: var(--dark);
+    background-color: var(--light);
+    padding-bottom: 3rem;
+}
+
+/* 2. LAYOUT DO HEADER */
+.main-header {
+    background: linear-gradient(135deg, #1b5e20, var(--primary));
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 1.5rem;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.header-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.8rem;
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* 3. ESTRUTURA DO CONTEÚDO CONTAINER */
+.content-container {
+    max-width: 1100px;
+    margin: -2rem auto 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* 4. CARDS DAS SEÇÕES */
+.topic-section {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.section-title {
+    color: var(--primary);
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-light);
+    padding-bottom: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+/* 5. GRID LAYOUT PARA OS CONTEÚDOS INTERNOS */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* 6. CARDS INTERNOS (ITEMS) */
+.info-card {
+    background-color: var(--light);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--secondary);
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-left-color: var(--primary);
+}
+
+/* Variação de cor para a seção de impactos ambientais */
+.critical-section .info-card {
+    border-left-color: #d32f2f;
+}
+.critical-section .info-card:hover {
+    border-left-color: #b71c1c;
+}
+
+.card-title {
+    color: var(--dark);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #546e7a;
+}
+
+/* 7. LAYOUT DO FOOTER */
+.main-footer {
+    text-align: center;
+    padding: 3rem 1.5rem 0 1.5rem;
+    color: #90a4ae;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 8. ADAPTAÇÕES PARA DISPOSITIVOS MÓVEIS (RESPONSIVIDADE) */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 4rem 1rem;
+        clip-path: none;
+    }
+    
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .content-container {
+        margin-top: 1.5rem;
+    }
+
+    .topic-section {
+        padding: 1.5rem;
+    }
+
+    .grid-layout {
+        gap: 1.2rem;
+    }
+}
