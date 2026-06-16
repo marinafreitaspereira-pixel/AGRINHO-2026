@@ -1,96 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // MENU MOBILE
-    const menuBtn = document.querySelector("#menu-btn");
-    const menu = document.querySelector("#menu");
+    // Seleciona todas as seções
+    const sections = document.querySelectorAll("section");
 
-    if (menuBtn && menu) {
-        menuBtn.addEventListener("click", () => {
-            menu.classList.toggle("ativo");
-        });
-    }
+    // Efeito inicial
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(40px)";
+        section.style.transition = "all 0.8s ease";
+    });
 
-    // ANIMAÇÃO DAS SEÇÕES
-    const secoes = document.querySelectorAll(".secao");
+    // Revelar ao rolar
+    function revealSections() {
+        sections.forEach(section => {
+            const top = section.getBoundingClientRect().top;
 
-    function revelarSecoes() {
-        secoes.forEach(secao => {
-            const topo = secao.getBoundingClientRect().top;
-
-            if (topo < window.innerHeight - 100) {
-                secao.classList.add("mostrar");
+            if (top < window.innerHeight - 100) {
+                section.style.opacity = "1";
+                section.style.transform = "translateY(0)";
             }
         });
     }
 
-    window.addEventListener("scroll", revelarSecoes);
-    revelarSecoes();
+    revealSections();
+    window.addEventListener("scroll", revealSections);
 
-    // CARDS EXPANSÍVEIS
-    const cards = document.querySelectorAll(".card");
+    // Clique nos títulos para expandir/recolher
+    const titulos = document.querySelectorAll("h2");
 
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
-            card.classList.toggle("aberto");
+    titulos.forEach(titulo => {
+        titulo.style.cursor = "pointer";
+
+        titulo.addEventListener("click", () => {
+
+            const conteudo = Array.from(titulo.parentElement.children)
+                .filter(el => el.tagName !== "H2");
+
+            conteudo.forEach(item => {
+                item.style.display =
+                    item.style.display === "none"
+                    ? "block"
+                    : "none";
+            });
         });
     });
 
-    // CONTADOR DO PIB
-    const contador = document.querySelector("#contador-pib");
+    // Destacar seção ao passar o mouse
+    sections.forEach(section => {
 
-    if (contador) {
-        let valor = 0;
-
-        const animar = setInterval(() => {
-            valor++;
-
-            contador.textContent = valor + "%";
-
-            if (valor >= 25) {
-                clearInterval(animar);
-            }
-        }, 60);
-    }
-
-    // FORMULÁRIO
-    const formulario = document.querySelector("#contato");
-
-    if (formulario) {
-        formulario.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const nome = document.querySelector("#nome").value.trim();
-            const email = document.querySelector("#email").value.trim();
-
-            if (!nome || !email) {
-                alert("Preencha todos os campos.");
-                return;
-            }
-
-            alert("Mensagem enviada com sucesso!");
-            formulario.reset();
-        });
-    }
-
-    // BOTÃO VOLTAR AO TOPO
-    const topoBtn = document.querySelector("#topo");
-
-    if (topoBtn) {
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                topoBtn.style.display = "block";
-            } else {
-                topoBtn.style.display = "none";
-            }
+        section.addEventListener("mouseenter", () => {
+            section.style.transform = "scale(1.02)";
+            section.style.boxShadow = "0 8px 20px rgba(0,0,0,0.15)";
         });
 
-        topoBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+        section.addEventListener("mouseleave", () => {
+            section.style.transform = "scale(1)";
+            section.style.boxShadow = "0 4px 6px rgba(0,0,0,0.05)";
         });
-    }
 
-});
+    });
+
+})
