@@ -1,3 +1,5 @@
+
+alert("JavaScript carregado com sucesso!");
 document.addEventListener("DOMContentLoaded", () => {
 
     // Seleciona todas as seções
