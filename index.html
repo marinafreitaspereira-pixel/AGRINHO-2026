@@ -15,11 +15,11 @@
             --light: #f5f5f5;
             --white: #ffffff;
             
-            /* Novas variáveis com cores modernas e sombras sutis */
+            /* Cores modernas para os flashcards */
             --card-green: #1b5e20;
-            --card-text: #37474f;
-            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --card-shadow-hover: 0 15px 35px rgba(46, 125, 50, 0.15);
+            --card-gradient: linear-gradient(135deg, #1b5e20, #2e7d32);
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --card-hover: 0 15px 30px rgba(46, 125, 50, 0.15);
         }
 
         body {
@@ -96,11 +96,11 @@
         }
 
         /* ==========================================
-           2. NOVO DESIGN DOS FLASHCARDS (Moderno e Sem Erros)
+           2. ESTILOS DOS FLASHCARDS (Design Moderno Corrigido)
            ========================================== */
         .fc-section-title {
             text-align: center;
-            margin: 4rem auto 1rem auto;
+            margin: 4rem auto 0.5rem auto;
             color: var(--primary);
             font-size: 2rem;
             font-weight: 700;
@@ -119,7 +119,7 @@
             padding: 0 1.5rem;
         }
 
-        /* Layout em flexbox para garantir alinhamento perfeito de 4 itens */
+        /* Organização em bloco flexível moderno */
         .fc-flex-layout {
             display: flex;
             flex-wrap: wrap;
@@ -127,7 +127,7 @@
             gap: 25px;
         }
 
-        /* Estrutura do Card com efeito 3D premium */
+        /* Tamanho ideal e efeito 3D estável */
         .fc-card {
             background-color: transparent;
             width: 280px;
@@ -147,17 +147,16 @@
             border-radius: 16px;
         }
 
-        /* Efeito hover suave antes de virar */
+        /* Efeito de elevação ao passar o mouse */
         .fc-card:hover .fc-card-inner {
-            box-shadow: var(--card-shadow-hover);
+            box-shadow: var(--card-hover);
         }
 
-        /* Classe que faz o card virar ao clicar */
+        /* Rotação acionada pelo clique */
         .fc-card.flipped .fc-card-inner {
             transform: rotateY(180deg);
         }
 
-        /* Configuração de face interna com ocultação traseira perfeita */
         .fc-front, .fc-back {
             position: absolute;
             width: 100%;
@@ -173,11 +172,11 @@
             box-sizing: border-box;
         }
 
-        /* Frente do cartão: Estilo Minimalista Clean */
+        /* Frente: Aparência Limpa e Minimalista */
         .fc-front {
             background-color: var(--white);
-            color: var(--card-text);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--dark);
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .fc-front h4 {
@@ -193,11 +192,12 @@
             margin: 0;
         }
 
-        .fc-front .fc-tip {
+        /* Tag moderna para induzir o clique */
+        .fc-front .fc-button-tip {
             font-size: 0.75rem;
             color: var(--primary);
             background-color: #e8f5e9;
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             text-transform: uppercase;
             font-weight: 600;
@@ -205,9 +205,9 @@
             margin-top: 25px;
         }
 
-        /* Verso do cartão: Verde Moderno com Degradê Suave */
+        /* Verso: Estilo Premium com Degradê */
         .fc-back {
-            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            background: var(--card-gradient);
             color: var(--white);
             transform: rotateY(180deg);
         }
@@ -216,10 +216,9 @@
             font-size: 0.95rem;
             line-height: 1.6;
             margin: 0;
-            font-weight: 400;
         }
 
-        /* Responsividade para celular: expande os cards para preencher a tela */
+        /* Adaptação perfeita para telas de celular */
         @media (max-width: 640px) {
             .fc-card {
                 width: 100%;
@@ -263,7 +262,7 @@
             <h3>Agricultura de Precisão</h3>
             <p>Em vez de jogar adubo no campo inteiro, tratores guiados por GPS e satélites jogam a quantidade exata planta por planta. Zero desperdício.</p>
             <h3>Irrigação Inteligente</h3>
-            <p>Sensores enterrados avisam se a terra está seca. O sistema só liga se precisar e desliga sozinho se chover.</p>
+            <p>Sensores enterrados avisam se a terra está seca. O sistema solo liga se precisar e desliga sozinho se chover.</p>
             <h3>Drones Agrícolas</h3>
             <p>Voam sobre a plantação e tiram fotos térmicas para achar pragas ou plantas doentes antes que a plantação inteira estrague.</p>
             <h3>Energia Limpa</h3>
