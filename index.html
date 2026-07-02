@@ -94,7 +94,7 @@
         }
 
         /* ==========================================
-           2. ESTILOS DOS FLASHCARDS (Corrigidos e Ajustados)
+           2. ESTILOS DOS FLASHCARDS (Correção do Erro de Exibição)
            ========================================== */
         .fc-section-title {
             text-align: center;
@@ -105,24 +105,24 @@
         }
 
         .fc-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto 4rem auto;
             padding: 0 1.5rem;
         }
 
-        /* Grid flexível para exibir exatamente 4 cards de forma simétrica */
+        /* Grid forçado para evitar que os cards sumam ou quebrem */
         .fc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr); /* 2 colunas fixas no PC */
+            gap: 25px;
         }
 
-        /* Altura levemente aumentada para evitar estouro de texto */
         .fc-card {
             background-color: transparent;
             height: 250px; 
             perspective: 1000px;
             cursor: pointer;
+            width: 100%; /* Garante que o card ocupe todo o espaço disponível */
         }
 
         .fc-card-inner {
@@ -136,7 +136,6 @@
             border-radius: 12px;
         }
 
-        /* Correção de bug de clique */
         .fc-card.flipped .fc-card-inner {
             transform: rotateY(180deg);
         }
@@ -151,9 +150,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 20px;
             border-radius: 12px;
             border: 1px solid #e0e0e0;
+            box-sizing: border-box;
         }
 
         .fc-front {
@@ -162,14 +162,15 @@
         }
 
         .fc-front h4 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--primary);
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
         }
 
         .fc-front p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #546e7a;
+            margin: 0;
         }
 
         .fc-front .fc-tip {
@@ -177,7 +178,7 @@
             color: #90a4ae;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .fc-back {
@@ -187,9 +188,16 @@
         }
 
         .fc-back p {
-            font-size: 0.9rem;
-            line-height: 1.5;
+            font-size: 0.95rem;
+            line-height: 1.6;
             margin: 0;
+        }
+
+        /* Ajuste automático para celulares (telas menores que 600px) */
+        @media (max-width: 600px) {
+            .fc-grid {
+                grid-template-columns: 1fr; /* 1 coluna no celular */
+            }
         }
     </style>
 </head>
@@ -257,14 +265,14 @@
     </main>
 
     <!-- ==========================================
-         SEÇÃO SELECIONADA: EXATAMENTE 4 FLASHCARDS
+         SISTEMA CORRIGIDO COM OS 4 FLASHCARDS VISÍVEIS
          ========================================== -->
     <h2 class="fc-section-title">🃏 Teste seus Conhecimentos (Flashcards)</h2>
     
     <div class="fc-container">
         <div class="fc-grid">
             
-            <!-- Card 1: Importância Geral -->
+            <!-- Card 1 -->
             <div class="fc-card" onclick="this.classList.toggle('flipped')">
                 <div class="fc-card-inner">
                     <div class="fc-front">
@@ -276,9 +284,3 @@
                         <p>O agronegócio representa quase 25% de toda a riqueza gerada (PIB) no país, movimentando empregos, indústrias e o comércio do interior.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 2: Sustentabilidade -->
-            <div class="fc-card" onclick="this.classList.toggle('flipped')">
-                <div class="fc-card-inner">
-                    <div class="fc-front">
