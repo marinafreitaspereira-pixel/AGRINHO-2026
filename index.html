@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agronegócio e Sustentabilidade</title>
     <style>
+        /* ==========================================
+           1. SEUS ESTILOS ORIGINAIS (Preservados)
+           ========================================== */
         :root {
             --primary: #2e7d32;
             --secondary: #8d6e63;
             --dark: #263238;
             --light: #f5f5f5;
             --white: #ffffff;
+            
+            /* Novas variáveis exclusivas para os flashcards */
+            --card-green: #1b5e20;
+            --card-vibrant: #2cba42;
+            --card-shadow: 0 8px 24px rgba(27, 94, 32, 0.1);
         }
 
         body {
@@ -85,93 +93,190 @@
             color: #78909c;
             font-size: 0.9rem;
         }
+
+        /* ==========================================
+           2. ESTILOS DOS FLASHCARDS (Isolados)
+           ========================================== */
+        .fc-section-title {
+            text-align: center;
+            margin: 4rem auto 2rem auto;
+            color: var(--primary);
+            font-size: 2rem;
+            max-width: 800px;
+        }
+
+        .fc-container {
+            max-width: 1200px;
+            margin: 0 auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .fc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .fc-card {
+            background-color: transparent;
+            height: 220px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .fc-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: var(--card-shadow);
+            border-radius: 12px;
+        }
+
+        .fc-card.flipped .fc-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .fc-front, .fc-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .fc-front {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .fc-front h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin: 0 0 10px 0;
+        }
+
+        .fc-front .fc-tip {
+            font-size: 0.8rem;
+            color: #78909c;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .fc-back {
+            background-color: var(--card-green);
+            color: var(--white);
+            transform: rotateY(180deg);
+        }
+
+        .fc-back p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Seu cabeçalho original -->
     <header>
         <h1>Agronegócio e Sustentabilidade 🌍🌾</h1>
         <p>O desafio de alimentar o mundo sem destruir o planeta.</p>
     </header>
 
+    <!-- Seu conteúdo em texto original -->
     <main>
-        <!-- Seção 1 -->
         <section>
             <h2>1. O que é o Agronegócio e por que ele importa?</h2>
-            
             <h3>Motor do País</h3>
             <p>É toda a cadeia produtiva que vai do campo até a mesa. No Brasil, quase 25% de toda a riqueza gerada (PIB) vem desse setor.</p>
-            
             <h3>Supermercado do Mundo</h3>
             <p>O país é um dos maiores exportadores de alimentos (como soja e carne). Isso garante empregos e equilibra a economia nacional.</p>
-            
             <h3>Cidades do Interior</h3>
             <p>O dinheiro do campo movimenta o comércio, faculdades, internet e infraestrutura de cidades inteiras longe das capitais.</p>
         </section>
 
-        <!-- Seção 2 -->
         <section>
             <h2>2. O que significa "Sustentabilidade no Campo"?</h2>
-            
             <h3>Regra dos 3 Ps</h3>
             <p>Para o campo dar certo hoje, ele precisa ser Produtivo (dar lucro), Protetor (cuidar da natureza) e Para as pessoas (respeitar os trabalhadores).</p>
-            
             <h3>Pensar no Futuro</h3>
             <p>Se esgotarmos a água e o solo agora, como as próximas gerações vão comer? Sustentabilidade é produzir sem zerar o estoque do planeta.</p>
-            
             <h3>Consumidor Consciente</h3>
             <p>A nossa geração e os compradores internacionais exigem selos e provas de que a comida foi produzida sem desmatamento legal.</p>
         </section>
 
-        <!-- Seção 3 -->
         <section>
             <h2>3. Tecnologia: O Campo virou "Tech" 🤖📲</h2>
-            
             <h3>Agricultura de Precisão</h3>
             <p>Em vez de jogar adubo no campo inteiro, tratores guiados por GPS e satélites jogam a quantidade exata planta por planta. Zero desperdício.</p>
-            
             <h3>Irrigação Inteligente</h3>
             <p>Sensores enterrados avisam se a terra está seca. O sistema só liga se precisar e desliga sozinho se chover.</p>
-            
             <h3>Drones Agrícolas</h3>
             <p>Voam sobre a plantação e tiram fotos térmicas para achar pragas ou plantas doentes antes que a plantação inteira estrague.</p>
-            
             <h3>Energia Limpa</h3>
             <p>Fazendas usando o cocô das vacas (biomassa) e restos de cana para gerar luz, além de telhados cheios de placas solares.</p>
         </section>
 
-        <!-- Seção 4 -->
         <section>
             <h2>4. O Lado Crítico: Os Impactos Ambientais</h2>
-            
             <h3>Desmatamento</h3>
             <p>Avançar a plantação destruindo florestas (como a Amazônia e o Cerrado) acaba com a biodiversidade e muda o clima local.</p>
-            
             <h3>Gasto de Água</h3>
             <p>A agricultura é a atividade que mais consome água doce no mundo. Usar errado causa seca em rios da região.</p>
-            
             <h3>Gases de Efeito Estufa</h3>
             <p>O pum do gado (metano) e o excesso de fertilizantes químicos na terra aumentam o aquecimento global.</p>
         </section>
 
-        <!-- Seção 5 -->
         <section>
-            <h2>5. Soluções Reais: Como resolver o problema?</h2>
-            
+            <h2>5. Soluções Reais: Como resolver o problem?</h2>
             <h3>ILPF (Combo Sustentável)</h3>
             <p>Uma técnica que mistura plantação, criação de gado e árvores na mesma fazenda. As árvores fazem sombra para o gado e sugam o gás carbônico do ar.</p>
-            
             <h3>Plantio Direto</h3>
             <p>Plantar a semente em cima dos restos da colheita passada, sem revirar a terra. Isso funciona como um "protetor solar" para o solo.</p>
-            
             <h3>Créditos de Carbono</h3>
             <p>Empresas poluidoras pagam dinheiro direto para o fazendeiro que mantém a floresta dele de pé. Preservar dá lucro.</p>
         </section>
     </main>
 
-    <footer>
-        <p>Resumo Informativo sobre Agronegócio e Sustentabilidade</p>
-    </footer>
+    <!-- ==========================================
+         NOVA SEÇÃO: FLASHCARDS DE ESTUDO INTERATIVOS
+         ========================================== -->
+    <h2 class="fc-section-title">🃏 Teste seus Conhecimentos (Flashcards)</h2>
     
-</body>
-</html>
+    <div class="fc-container">
+        <div class="fc-grid">
+            
+            <!-- Card 1 -->
+            <div class="fc-card" onclick="this.classList.toggle('flipped')">
+                <div class="fc-card-inner">
+                    <div class="fc-front">
+                        <h4>Motor do País</h4>
+                        <p>Qual a importância do PIB no Agronegócio?</p>
+                        <p class="fc-tip">Clique para virar</p>
+                    </div>
+                    <div class="fc-back">
+                        <p>O Agronegócio engloba toda a cadeia do campo à mesa, representando quase 25% de toda a riqueza gerada (PIB) no Brasil.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="fc-card" onclick="this.classList.toggle('flipped')">
+                <div class="fc-card-inner">
+                    <div class="fc-front">
+                        <h4>Supermercado do Mundo</h4>
+                        <p>Qual o papel do Brasil na exportação?</p>
+                        <p class="fc-tip">Clique para virar</p>
+                    </div>
+                    <div class="fc-back">
