@@ -15,9 +15,8 @@
             --light: #f5f5f5;
             --white: #ffffff;
             
-            /* Novas variáveis exclusivas para os flashcards */
+            /* Variáveis exclusivas para os flashcards */
             --card-green: #1b5e20;
-            --card-vibrant: #2cba42;
             --card-shadow: 0 8px 24px rgba(27, 94, 32, 0.1);
         }
 
@@ -95,7 +94,7 @@
         }
 
         /* ==========================================
-           2. ESTILOS DOS FLASHCARDS (Isolados)
+           2. ESTILOS DOS FLASHCARDS (Corrigidos e Ajustados)
            ========================================== */
         .fc-section-title {
             text-align: center;
@@ -106,20 +105,22 @@
         }
 
         .fc-container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto 4rem auto;
             padding: 0 1.5rem;
         }
 
+        /* Grid flexível para exibir exatamente 4 cards de forma simétrica */
         .fc-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
+        /* Altura levemente aumentada para evitar estouro de texto */
         .fc-card {
             background-color: transparent;
-            height: 220px;
+            height: 250px; 
             perspective: 1000px;
             cursor: pointer;
         }
@@ -135,6 +136,7 @@
             border-radius: 12px;
         }
 
+        /* Correção de bug de clique */
         .fc-card.flipped .fc-card-inner {
             transform: rotateY(180deg);
         }
@@ -149,7 +151,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
             border-radius: 12px;
             border: 1px solid #e0e0e0;
         }
@@ -165,9 +167,14 @@
             margin: 0 0 10px 0;
         }
 
+        .fc-front p {
+            font-size: 0.95rem;
+            color: #546e7a;
+        }
+
         .fc-front .fc-tip {
-            font-size: 0.8rem;
-            color: #78909c;
+            font-size: 0.75rem;
+            color: #90a4ae;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 15px;
@@ -180,7 +187,7 @@
         }
 
         .fc-back p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.5;
             margin: 0;
         }
@@ -239,7 +246,7 @@
         </section>
 
         <section>
-            <h2>5. Soluções Reais: Como resolver o problem?</h2>
+            <h2>5. Soluções Reais: Como resolver o problema?</h2>
             <h3>ILPF (Combo Sustentável)</h3>
             <p>Uma técnica que mistura plantação, criação de gado e árvores na mesma fazenda. As árvores fazem sombra para o gado e sugam o gás carbônico do ar.</p>
             <h3>Plantio Direto</h3>
@@ -250,33 +257,28 @@
     </main>
 
     <!-- ==========================================
-         NOVA SEÇÃO: FLASHCARDS DE ESTUDO INTERATIVOS
+         SEÇÃO SELECIONADA: EXATAMENTE 4 FLASHCARDS
          ========================================== -->
     <h2 class="fc-section-title">🃏 Teste seus Conhecimentos (Flashcards)</h2>
     
     <div class="fc-container">
         <div class="fc-grid">
             
-            <!-- Card 1 -->
+            <!-- Card 1: Importância Geral -->
             <div class="fc-card" onclick="this.classList.toggle('flipped')">
                 <div class="fc-card-inner">
                     <div class="fc-front">
-                        <h4>Motor do País</h4>
-                        <p>Qual a importância do PIB no Agronegócio?</p>
+                        <h4>O Agronegócio</h4>
+                        <p>Qual a sua relevância para o PIB do Brasil?</p>
                         <p class="fc-tip">Clique para virar</p>
                     </div>
                     <div class="fc-back">
-                        <p>O Agronegócio engloba toda a cadeia do campo à mesa, representando quase 25% de toda a riqueza gerada (PIB) no Brasil.</p>
+                        <p>O agronegócio representa quase 25% de toda a riqueza gerada (PIB) no país, movimentando empregos, indústrias e o comércio do interior.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
+            <!-- Card 2: Sustentabilidade -->
             <div class="fc-card" onclick="this.classList.toggle('flipped')">
                 <div class="fc-card-inner">
                     <div class="fc-front">
-                        <h4>Supermercado do Mundo</h4>
-                        <p>Qual o papel do Brasil na exportação?</p>
-                        <p class="fc-tip">Clique para virar</p>
-                    </div>
-                    <div class="fc-back">
