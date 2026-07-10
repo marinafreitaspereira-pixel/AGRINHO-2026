@@ -1,187 +1,88 @@
-/* 1. VARIÁVEIS E PALETA DE CORES VIVAS */
+/* ==========================================================================
+   AGRINHO 2026 - IDENTIDADE VISUAL CORPORATIVA (AGRONEGÓCIO SUSTENTÁVEL)
+   ========================================================================== */
+
+/* --- VARIÁVEIS DE DESIGN DE MARCA --- */
 :root {
-    --primary: #1b5e20;          /* Verde floresta fechado */
-    --primary-vibrant: #2cba42;  /* Verde broto vivo */
-    --primary-light: #e8f5e9;    /* Fundo verde sutil */
-    --secondary: #a1887f;        /* Marrom terra claro */
-    --secondary-dark: #5d4037;   /* Marrom terra profundo */
-    --dark: #1a237e;             /* Azul escuro bio-tech */
-    --light: #f1f8e9;            /* Fundo esverdeado suave */
+    --primary: #1b4d3e;       /* Verde escuro institucional / Floresta */
+    --secondary: #2e7d32;     /* Verde bio/tecnológico / Campo */
+    --accent: #81c784;        /* Verde claro para destaques e links ativos */
+    --dark: #212529;          /* Grafite premium para leitura de textos */
+    --light: #f4f7f5;         /* Fundo leve acinzentado-esverdeado */
     --white: #ffffff;
-    --shadow: 0 8px 24px rgba(27, 94, 32, 0.05);
+    --shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
     --transition: all 0.3s ease;
 }
 
+/* --- RESET DE LAYOUT --- */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    line-height: 1.7;
-    color: #37474f;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--dark);
     background-color: var(--light);
-    padding-bottom: 3rem;
-    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* 2. LAYOUT DO HEADER (CORRIGIDO: SEM CLIP-PATH BUGADO) */
-.main-header {
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color: var(--white);
-    text-align: center;
-    padding: 5rem 1.5rem 6rem 1.5rem;
-}
-
-.header-title {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 0.8rem;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.header-subtitle {
-    font-size: 1.3rem;
-    opacity: 0.95;
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: 400;
-    color: #c8e6c9;
-    animation: fadeInUp 1s ease-out;
-}
-
-/* 3. ESTRUTURA DO CONTAINER */
-.content-container {
-    max-width: 1100px;
-    margin: -3rem auto 0 auto;
-    padding: 0 1.5rem;
-    position: relative;
-    z-index: 10;
-}
-
-/* 4. CARDS DAS SEÇÕES */
-.topic-section {
-    background-color: var(--white);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin-bottom: 3rem;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    animation: fadeInUp 0.8s ease-out both;
-}
-
-.section-title {
-    color: var(--primary);
-    font-size: 1.8rem;
-    border-bottom: 3px solid var(--primary-vibrant);
-    padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
-    display: inline-block;
-}
-
-/* 5. GRID LAYOUT */
-.grid-layout {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-/* 6. CARDS INTERNOS (CORRIGIDO: BORDAS SUAVES E SEM CONFLITO DE CORES) */
-.info-card {
-    background-color: #fbc02d05; /* Fundo leve */
-    padding: 1.8rem;
-    border-radius: 12px;
-    border: 1px solid rgba(161, 136, 127, 0.2); /* Borda fina marrom */
-    transition: var(--transition);
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(27, 94, 32, 0.08);
-    border-color: var(--primary-vibrant);
-    background-color: var(--primary-light);
-}
-
-/* Customização para a Seção Crítica (Vermelha) */
-.critical-section {
-    border: 1px solid rgba(211, 47, 47, 0.1);
-}
-
-.critical-section .section-title {
-    color: #d32f2f;
-    border-bottom-color: #ef5350;
-}
-
-.critical-section .info-card {
-    border-color: rgba(211, 47, 47, 0.2);
-}
-
-.critical-section .info-card:hover {
-    border-color: #d32f2f;
-    background-color: #ffebee;
-    box-shadow: 0 10px 20px rgba(211, 47, 47, 0.08);
-}
-
-.card-title {
-    color: var(--secondary-dark);
-    font-size: 1.25rem;
-    margin-bottom: 0.7rem;
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
 
-.critical-section .card-title {
-    color: #c62828;
+/* --- CONTAINER E ALINHAMENTOS --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.card-text {
-    font-size: 0.98rem;
-    color: #455a64;
+/* --- BARRA DE NAVEGAÇÃO (HEADER) --- */
+header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* 7. LAYOUT DO FOOTER */
-.main-footer {
-    text-align: center;
-    padding: 4rem 1.5rem 1rem 1.5rem;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.4rem;
     color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--dark);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    transition: var(--transition);
 }
 
-/* 8. ANIMAÇÃO DE ENTRADA SUAVE */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.nav-menu a:hover {
+    color: var(--secondary);
 }
 
-/* 9. RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 4rem 1rem 5rem 1rem;
-    }
-    
-    .header-title {
-        font-size: 2.2rem;
-    }
-
-    .content-container {
-        margin-top: -2rem;
-    }
-
-    .topic-section {
-        padding: 1.8rem;
-        margin-bottom: 2rem;
-    }
-
-    .grid-layout {
-        gap: 1.5rem;
-    }
-}
+/* --- SEÇÃO HERO (BANNER PRINCIPAL) --- */
+.hero {
+    background: linear-gradient(135deg, rgba(27,77,6
