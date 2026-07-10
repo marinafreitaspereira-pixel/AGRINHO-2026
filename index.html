@@ -3,290 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agronegócio e Sustentabilidade</title>
+    <title>Agro Forte, Futuro Sustentável - AGRINHO 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* ==========================================
-           1. SEUS ESTILOS ORIGINAIS (Preservados)
-           ========================================== */
+        /* --- ESTILOS GERAIS E VARIÁVEIS --- */
         :root {
-            --primary: #2e7d32;
-            --secondary: #8d6e63;
-            --dark: #263238;
-            --light: #f5f5f5;
+            --primary: #1b4d3e;       /* Verde corporativo escuro */
+            --secondary: #2e7d32;     /* Verde bio/tecnológico */
+            --accent: #81c784;        /* Verde claro/destaque */
+            --dark: #212529;          /* Grafite para textos */
+            --light: #f4f7f5;         /* Fundo leve */
             --white: #ffffff;
-            
-            /* Cores modernas para os flashcards */
-            --card-green: #1b5e20;
-            --card-gradient: linear-gradient(135deg, #1b5e20, #2e7d32);
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            --card-hover: 0 15px 30px rgba(46, 125, 50, 0.15);
+            --shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+            --transition: all 0.3s ease;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
+        * {
             margin: 0;
             padding: 0;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        h3 {
-            color: var(--secondary);
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        p {
-            margin: 0 0 1rem;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #78909c;
-            font-size: 0.9rem;
-        }
-
-        /* ==========================================
-           2. ESTILOS DOS FLASHCARDS (Design Moderno Corrigido)
-           ========================================== */
-        .fc-section-title {
-            text-align: center;
-            margin: 4rem auto 0.5rem auto;
-            color: var(--primary);
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .fc-section-subtitle {
-            text-align: center;
-            color: #607d8b;
-            margin-bottom: 2.5rem;
-            font-size: 1rem;
-        }
-
-        .fc-container {
-            max-width: 1000px;
-            margin: 0 auto 5rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Organização em bloco flexível moderno */
-        .fc-flex-layout {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        /* Tamanho ideal e efeito 3D estável */
-        .fc-card {
-            background-color: transparent;
-            width: 280px;
-            height: 280px; 
-            perspective: 1200px;
-            cursor: pointer;
-        }
-
-        .fc-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-            box-shadow: var(--card-shadow);
-            border-radius: 16px;
-        }
-
-        /* Efeito de elevação ao passar o mouse */
-        .fc-card:hover .fc-card-inner {
-            box-shadow: var(--card-hover);
-        }
-
-        /* Rotação acionada pelo clique */
-        .fc-card.flipped .fc-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .fc-front, .fc-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 24px;
-            border-radius: 16px;
             box-sizing: border-box;
         }
 
-        /* Frente: Aparência Limpa e Minimalista */
-        .fc-front {
-            background-color: var(--white);
+        body {
+            font-family: 'Open Sans', sans-serif;
             color: var(--dark);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .fc-front h4 {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin: 0 0 12px 0;
-            font-weight: 600;
-        }
-
-        .fc-front p {
-            font-size: 0.95rem;
-            color: #546e7a;
-            margin: 0;
-        }
-
-        /* Tag moderna para induzir o clique */
-        .fc-front .fc-button-tip {
-            font-size: 0.75rem;
-            color: var(--primary);
-            background-color: #e8f5e9;
-            padding: 5px 14px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-top: 25px;
-        }
-
-        /* Verso: Estilo Premium com Degradê */
-        .fc-back {
-            background: var(--card-gradient);
-            color: var(--white);
-            transform: rotateY(180deg);
-        }
-
-        .fc-back p {
-            font-size: 0.95rem;
+            background-color: var(--light);
             line-height: 1.6;
-            margin: 0;
         }
 
-        /* Adaptação perfeita para telas de celular */
-        @media (max-width: 640px) {
-            .fc-card {
-                width: 100%;
-                height: 260px;
-            }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
-    </style>
-</head>
-<body>
 
-    <!-- Seu cabeçalho original -->
-    <header>
-        <h1>Agronegócio e Sustentabilidade 🌍🌾</h1>
-        <p>O desafio de alimentar o mundo sem destruir o planeta.</p>
-    </header>
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    <!-- Seu conteúdo em texto original -->
-    <main>
-        <section>
-            <h2>1. O que é o Agronegócio e por que ele importa?</h2>
-            <h3>Motor do País</h3>
-            <p>É toda a cadeia produtiva que vai do campo até a mesa. No Brasil, quase 25% de toda a riqueza gerada (PIB) vem desse setor.</p>
-            <h3>Supermercado do Mundo</h3>
-            <p>O país é um dos maiores exportadores de alimentos (como soja e carne). Isso garante empregos e equilibra a economia nacional.</p>
-            <h3>Cidades do Interior</h3>
-            <p>O dinheiro do campo movimenta o comércio, faculdades, internet e infraestrutura de cidades inteiras longe das capitais.</p>
-        </section>
-
-        <section>
-            <h2>2. O que significa "Sustentabilidade no Campo"?</h2>
-            <h3>Regra dos 3 Ps</h3>
-            <p>Para o campo dar certo hoje, ele precisa ser Produtivo (dar lucro), Protetor (cuidar da natureza) e Para as pessoas (respeitar os trabalhadores).</p>
-            <h3>Pensar no Futuro</h3>
-            <p>Se esgotarmos a água e o solo agora, como as próximas gerações vão comer? Sustentabilidade é produzir sem zerar o estoque do planeta.</p>
-            <h3>Consumidor Consciente</h3>
-            <p>A nossa geração e os compradores internacionais exigem selos e provas de que a comida foi produzida sem desmatamento legal.</p>
-        </section>
-
-        <section>
-            <h2>3. Tecnologia: O Campo virou "Tech" 🤖📲</h2>
-            <h3>Agricultura de Precisão</h3>
-            <p>Em vez de jogar adubo no campo inteiro, tratores guiados por GPS e satélites jogam a quantidade exata planta por planta. Zero desperdício.</p>
-            <h3>Irrigação Inteligente</h3>
-            <p>Sensores enterrados avisam se a terra está seca. O sistema solo liga se precisar e desliga sozinho se chover.</p>
-            <h3>Drones Agrícolas</h3>
-            <p>Voam sobre a plantação e tiram fotos térmicas para achar pragas ou plantas doentes antes que a plantação inteira estrague.</p>
-            <h3>Energia Limpa</h3>
-            <p>Fazendas usando o cocô das vacas (biomassa) e restos de cana para gerar luz, além de telhados cheios de placas solares.</p>
-        </section>
-
-        <section>
-            <h2>4. O Lado Crítico: Os Impactos Ambientais</h2>
-            <h3>Desmatamento</h3>
-            <p>Avançar a plantação destruindo florestas (como a Amazônia e o Cerrado) acaba com a biodiversidade e muda o clima local.</p>
-            <h3>Gasto de Água</h3>
-            <p>A agricultura é a atividade que mais consome água doce no mundo. Usar errado causa seca em rios da região.</p>
-            <h3>Gases de Efeito Estufa</h3>
-            <p>O pum do gado (metano) e o excesso de fertilizantes químicos na terra aumentam o aquecimento global.</p>
-        </section>
-
-        <section>
-            <h2>5. Soluções Reais: Como resolver o problema?</h2>
-            <h3>ILPF (Combo Sustentável)</h3>
-            <p>Uma técnica que mistura plantação, criação de gado e árvores na mesma fazenda. As árvores fazem sombra para o gado e sugam o gás carbônico do ar.</p>
-            <h3>Plantio Direto</h3>
-            <p>Plantar a semente em cima dos restos da colheita passada, sem revirar a terra. Isso funciona como um "protetor solar" para o solo.</p>
-            <h3>Créditos de Carbono</h3>
-            <p>Empresas poluidoras pagam dinheiro direto para o fazendeiro que mantém a floresta dele de pé. Preservar dá lucro.</p>
-        </section>
-    </main>
-
+        /* --- HEADER / NAVEGAÇÃO --- */
+        header {
+            background-color: var(--white);
+            box
