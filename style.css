@@ -1,25 +1,425 @@
-/* --- CLASSES AUXILIARES (SEPARAÇÃO 100% DO HTML) --- */
+/* ==========================================================================
+   AGRINHO 2026 - IDENTIDADE VISUAL CORPORATIVA (STYLE.CSS)
+   ========================================================================== */
+
+/* --- VARIÁVEIS DE DESIGN --- */
+:root {
+    --primary: #1b4d3e;       /* Verde escuro institucional */
+    --secondary: #2e7d32;     /* Verde tecnológico */
+    --accent: #81c784;        /* Verde claro */
+    --dark: #212529;          /* Grafite para leitura */
+    --light: #f4f7f5;         /* Fundo leve */
+    --white: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+    --transition: all 0.3s ease;
+}
+
+/* --- RESET DE LAYOUT --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--dark);
+    background-color: var(--light);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- HEADER E NAVEGAÇÃO --- */
+header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: box-shadow 0.3s ease;
+}
+
+.header-scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.nav-menu a:hover {
+    color: var(--secondary);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background: linear-gradient(135deg, rgba(27,77,62,0.95) 0%, rgba(46,125,50,0.85) 100%);
+    color: var(--white);
+    padding: 90px 0;
+    text-align: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--primary);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background-color: var(--light);
+}
+
+/* --- SEÇÕES E CARDS CORPORATIVOS --- */
+section {
+    padding: 70px 0;
+}
+
 .section-white {
     background-color: var(--white);
 }
 
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
 .title-left {
     text-align: left;
-    margin-bottom: 30px;
+}
+
+.title-left::after {
+    margin: 15px 0 0 0;
 }
 
 .section-subtitle {
     text-align: center;
     max-width: 800px;
-    margin: -20px auto 40px;
+    margin: 0 auto 40px;
     color: #666;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-top: 5px solid var(--secondary);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 24px;
+}
+
+.card h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.25rem;
 }
 
 .card-primary-border {
     border-top-color: var(--primary);
 }
 
+/* --- LISTA E ALERTAS --- */
+.flex-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.flex-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.concept-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.concept-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.concept-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--secondary);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.alert-card {
+    background-color: #fff5f5;
+    border-left: 5px solid #e53935;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.alert-card h3 {
+    color: #c62828;
+    margin-bottom: 10px;
+}
+
+/* --- FLASHCARDS INTERATIVOS (EFEITO 3D) --- */
+.flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.flashcard {
+    background-color: transparent;
+    width: 100%;
+    height: 380px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+    box-shadow: var(--shadow);
+    border-radius: 15px;
+}
+
+.flashcard.flipped .flashcard-inner {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.flashcard-front {
+    background-color: var(--light);
+    border: 2px solid var(--accent);
+    color: var(--primary);
+}
+
+.flashcard-front h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.card-hint {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.flashcard-back {
+    background-color: var(--white);
+    color: var(--dark);
+    transform: rotateY(180deg);
+    border: 2px solid var(--secondary);
+}
+
+.flashcard-back img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* --- FORMULÁRIO DE CONTATO --- */
+.contact-form-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+}
+
+.input-error {
+    border-color: #e53935 !important;
+    background-color: #fff5f5;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-submit:hover {
+    background-color: var(--secondary);
+}
+
+/* --- ANIMAÇÃO DE ROLAGEM (SCRIPT) --- */
+.animated-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9rem;
+}
+
 .footer-sub {
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+
+    section {
+        padding: 45px 0;
+    }
 }
