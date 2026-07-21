@@ -4,48 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Forte, Futuro Sustentável - AGRINHO 2026</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
-    <style>
-        /* --- ESTILOS GERAIS E VARIÁVEIS --- */
-        :root {
-            --primary: #1b4d3e;       /* Verde corporativo escuro */
-            --secondary: #2e7d32;     /* Verde bio/tecnológico */
-            --accent: #81c784;        /* Verde claro/destaque */
-            --dark: #212529;          /* Grafite para textos */
-            --light: #f4f7f5;         /* Fundo leve */
-            --white: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-            --transition: all 0.3s ease;
-        }
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <strong>AGRINHO 2026</strong>
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#economia">Economia</a></li>
+                    <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                    <li><a href="#tecnologia">Tecnologia</a></li>
+                    <li><a href="#impactos">Desafios</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-        }
+    <section class="hero">
+        <div class="container">
+            <h1>Agro Forte, Futuro Sustentável</h1>
+            <p>O desafio de alimentar o mundo sem destruir o planeta: encontrando o verdadeiro equilíbrio entre a produção em escala e a preservação do meio ambiente.</p>
+            <a href="#solucoes" class="btn">Conheça o Futuro</a>
+        </div>
+    </section>
 
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
+    <section id="economia">
+        <div class="container">
+            <h2 class="section-title">O Agronegócio e sua Importância Econômica</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Motor do País</h3>
+                    <p>Representa toda a cadeia produtiva que vai do campo até a mesa. No Brasil, quase 25% de toda a riqueza gerada (PIB) provém diretamente desse setor essencial.</p>
+                </div>
+                <div class="card">
+                    <h3>Supermercado do Mundo</h3>
+                    <p>O país consolidou-se como um dos maiores exportadores de alimentos globais, garantindo milhares de empregos e equilibrando a economia nacional.</p>
+                </div>
+                <div class="card">
+                    <h3>Cidades do Interior</h3>
+                    <p>O capital gerado no campo impulsiona o desenvolvimento regional, movimentando o comércio, faculdades, conectividade e a infraestrutura local.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    <section id="sustentabilidade" class="section-white">
+        <div class="container flex-layout">
+            <div class="flex-text">
+                <h2 class="section-title title-left">Sustentabilidade no Campo</h2>
+                <p>Produzir alimentos com responsabilidade exige um novo olhar estratégico sobre os recursos naturais. A sustentabilidade empresarial baseia-se na segurança de que nossas atividades de hoje não comprometerão a subsistência do amanhã.</p>
+                <ul class="concept-list">
+                    <li><strong>Regra dos 3 Ps:</strong> Para o campo prosperar, ele precisa operar sob o tripé: ser <em>Produtivo</em> (gerar lucro), <em>Protetor</em> (cuidar da natureza) e voltado <em>Para as pessoas</em> (respeito aos colaboradores).</li>
+                    <li><strong>Pensar no Futuro:</strong> Evitar o esgotamento da água e do solo garante a produção de alimentos para as próximas gerações, mantendo o estoque do planeta.</li>
+                    <li><strong>Consumidor Consciente:</strong> O mercado atual e os compradores internacionais exigem certificações rígidas e provas de que os alimentos foram gerados sem desmatamento ilegal.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-        /* --- HEADER / NAVEGAÇÃO --- */
-        header {
-            background-color: var(--white);
-            box
+    <section id="tecnologia">
+        <div class="container">
+            <h2 class="section-title">Inovação e Tecnologia no Campo</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Agricultura de Precisão</h3>
+                    <p>Utilização de tratores guiados por GPS e satélites para aplicar insumos na quantidade exata, planta por planta, reduzindo o desperdício a zero.</p>
+                </div>
+                <div class="card">
+                    <h3>Irrigação Inteligente</h3>
+                    <p>Sensores conectados ao solo determinam o nível de umidade exato, ativando os sistemas automatizados de água apenas quando necessário.</p>
+                </div>
+                <div class="card">
+                    <h3>Drones Agrícolas</h3>
+                    <p>Mapeamento aéreo por meio de fotos térmicas que identificam pragas ou anomalias nas lavouras de forma precoce, evitando perdas em larga escala.</p>
+                </div>
+                <div class="card">
+                    <h3>Energia Limpa</h3>
+                    <p>Fazendas modernas transformam resíduos biológicos (biomassa) e restos de culturas em eletricidade, além do uso massivo de painéis solares fotovoltaicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="impactos" class="section-white">
+        <div class="container">
+            <h2 class="section-title">O Lado Crítico: Impactos Ambientais</h2>
+            <p class="section-subtitle">Para construir soluções robustas, o setor empresarial deve encarar de frente os desafios e mitigar as consequências negativas das atividades agrícolas tradicionais.</p>
+            <div class="grid-3">
+                <div class="alert-card">
+                    <h3>Desmatamento</h3>
+                    <p>A expansão desordenada de fronteiras agrícolas sobre florestas nativas prejudica gravemente a biodiversidade e altera negativamente o microclima regional.</p>
+                </div>
+                <div class="alert-card">
+                    <h3>Consumo de Recursos Hídricos</h3>
+                    <p>Sendo a atividade com maior demanda por água doce, o gerenciamento incorreto ou ineficiente da irrigação pode causar secas severas nos leitos locais.</p>
+                </div>
+                <div class="alert-card">
+                    <h3>Gases de Efeito Estufa</h3>
+                    <p>Emissões expressivas de gás metano vindas da pecuária e o uso intensivo de fertilizantes nitrogenados tradicionais aceleram as mudanças climáticas globais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solucoes">
+        <div class="container">
+            <h2 class="section-title">Soluções Reais para o Futuro</h2>
+            <div class="grid-3">
+                <div class="card card-primary-border">
+                    <h3>ILPF (Integração Lavoura-Pecuária-Floresta)</h3>
+                    <p>Estratégia sinérgica que une plantações, pastagens e árvores na mesma propriedade. As árvores oferecem conforto térmico ao gado e sequestram ativamente o CO₂ da atmosfera.</p>
+                </div>
+                <div class="card card-primary-border">
+                    <h3>Sistema de Plantio Direto</h3>
+                    <p>Cultivo realizado diretamente sobre a palhada da colheita anterior, dispensando o revolvimento do solo. Funciona como uma proteção natural, retendo umidade e nutrientes.</p>
+                </div>
+                <div class="card card-primary-border">
+                    <h3>Mercado de Créditos de Carbono</h3>
+                    <p>Mecanismo financeiro sustentável onde indústrias compensam suas emissões remunerando produtores rurais que mantêm suas áreas de floresta nativa preservadas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>AGRINHO 2026</strong> - Projeto Escolar Institucional</p>
+            <p class="footer-sub">Tema: Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
