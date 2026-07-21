@@ -1,80 +1,115 @@
-// Aguarda o HTML da sua página carregar completamente
+/* ==========================================================================
+   AGRINHO 2026 - COMPORTAMENTO, INTERATIVIDADE E VALIDAÇÕES (SCRIPT.JS)
+   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Seleciona todos os títulos h3 da sua página
-    const titulosCards = document.querySelectorAll('main section h3');
+    /* --- 1. RESPOSTA AOS CLIQUES E ROLAGEM SUAVE --- */
+    const navLinks = document.querySelectorAll('.nav-menu a, .btn');
 
-    // Configuração inicial de estilos e estados via JavaScript
-    titulosCards.forEach(titulo => {
-        const explicacao = titulo.nextElementSibling;
-        
-        // Configura o título h3 como um botão interativo
-        titulo.style.cursor = 'pointer';
-        titulo.style.userSelect = 'none';
-        titulo.style.display = 'flex';
-        titulo.style.alignItems = 'center';
-        titulo.style.gap = '8px';
-        titulo.style.transition = 'color 0.3s ease, transform 0.2s ease';
-        
-        // Injeta uma seta animada ao lado do título
-        titulo.innerHTML = `<span>${titulo.innerHTML}</span> <span class="seta-card" style="transition: transform 0.3s ease; font-size: 0.9rem;">▶</span>`;
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            const targetId = link.getAttribute('href');
 
-        // Prepara o parágrafo de explicação com transições de animação suave
-        if (explicacao && explicacao.tagName === 'P') {
-            explicacao.style.maxHeight = '0px';
-            explicacao.style.opacity = '0';
-            explicacao.style.overflow = 'hidden';
-            explicacao.style.transition = 'max-height 0.4s ease, opacity 0.3s ease, padding 0.4s ease';
-            explicacao.style.backgroundColor = 'var(--primary-light, #e8f5e9)'; 
-            explicacao.style.borderRadius = '8px';
-            explicacao.style.padding = '0px 1.5rem'; // Começa sem padding vertical para não dar tranco
-            explicacao.style.marginTop = '8px';
-            explicacao.style.borderLeft = '4px solid var(--primary-vibrant, #2cba42)';
-        }
+            // Verifica se o clique foi para uma seção interna da página
+            if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+                event.preventDefault();
+                const targetElement = document.querySelector(targetId);
 
-        // Micro-interação de Hover: Dá um leve zoom ao passar o mouse no título
-        titulo.addEventListener('mouseenter', () => {
-            titulo.style.transform = 'translateX(5px)';
-        });
-        titulo.addEventListener('mouseleave', () => {
-            titulo.style.transform = 'translateX(0px)';
-        });
-    });
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    // Lógica de clique com animações integradas
-    titulosCards.forEach(titulo => {
-        titulo.addEventListener('click', () => {
-            const explicacao = titulo.nextElementSibling;
-            const seta = titulo.querySelector('.seta-card');
-
-            if (explicacao && explicacao.tagName === 'P') {
-                // Verifica se o card está fechado olhando a altura máxima
-                if (explicacao.style.maxHeight === '0px' || explicacao.style.maxHeight === '') {
-                    
-                    // AÇÃO: ABRIR O CARD
-                    explicacao.style.maxHeight = '200px'; // Altura limite suficiente para o texto expandir
-                    explicacao.style.opacity = '1';
-                    explicacao.style.padding = '1rem 1.5rem'; // Aplica o espaçamento do texto
-                    
-                    // Animação dos elementos visuais
-                    if (seta) seta.style.transform = 'rotate(90deg)'; // Gira a seta para baixo
-                    titulo.style.color = 'var(--primary-vibrant, #2cba42)'; // Destaca o título com o verde vivo
-                    
-                } else {
-                    
-                    // AÇÃO: FECHAR O CARD
-                    explicacao.style.maxHeight = '0px';
-                    explicacao.style.opacity = '0';
-                    explicacao.style.padding = '0px 1.5rem'; // Remove o espaçamento vertical
-                    
-                    // Reseta os elementos visuais
-                    if (seta) seta.style.transform = 'rotate(0deg)'; // Volta a seta para a posição inicial
-                    titulo.style.color = 'var(--secondary-dark, #5d4037)'; // Retorna à cor original
-                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             }
         });
     });
 
-});
+    /* --- 2. AÇÃO NO HEADER (SOMBRA AO ROLAR A PÁGINA) --- */
+    const header = document.querySelector('header');
 
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    });
+
+    /* --- 3. ANIMAÇÕES DE ENTRADA (EXPERIÊNCIA VIVA) --- */
+    const animatableElements = document.querySelectorAll('.card, .alert-card, .section-title');
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.15
+    };
+
+    const elementObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Adiciona a classe que ativa a animação configurada no CSS
+                entry.target.classList.add('animated-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animatableElements.forEach(element => {
+        elementObserver.observe(element);
+    });
+
+    /* --- 4. VALIDAÇÃO INTELIGENTE DE FORMULÁRIO --- */
+    const form = document.querySelector('#contact-form');
+
+    if (form) {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Captura os campos
+            const nameInput = document.querySelector('#input-name');
+            const emailInput = document.querySelector('#input-email');
+            const messageInput = document.querySelector('#input-message');
+
+            let isValid = true;
+
+            // Validação simples de nome
+            if (!nameInput || nameInput.value.trim() === '') {
+                isValid = false;
+                nameInput.classList.add('input-error');
+            } else {
+                nameInput.classList.remove('input-error');
+            }
+
+            // Validação de e-mail com Expressão Regular (Regex)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput || !emailPattern.test(emailInput.value.trim())) {
+                isValid = false;
+                emailInput.classList.add('input-error');
+            } else {
+                emailInput.classList.remove('input-error');
+            }
+
+            // Validação do campo de mensagem
+            if (!messageInput || messageInput.value.trim() === '') {
+                isValid = false;
+                messageInput.classList.add('input-error');
+            } else {
+                messageInput.classList.remove('input-error');
+            }
+
+            // Ação com base na validação
+            if (isValid) {
+                alert('Mensagem enviada com sucesso! Agradecemos o seu contato com o projeto AGRINHO 2026.');
+                form.reset();
+            } else {
+                alert('Por favor, preencha corretamente todos os campos destacados.');
+            }
+        });
+    }
+
+});
