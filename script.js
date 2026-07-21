@@ -1,17 +1,16 @@
 /* ==========================================================================
-   AGRINHO 2026 - COMPORTAMENTO, INTERATIVIDADE E VALIDAÇÕES (SCRIPT.JS)
+   AGRINHO 2026 - COMPORTAMENTO, FLASHCARDS E VALIDAÇÃO (SCRIPT.JS)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* --- 1. RESPOSTA AOS CLIQUES E ROLAGEM SUAVE --- */
+    /* --- 1. ROLAGEM SUAVE AO CLICAR NOS LINKS --- */
     const navLinks = document.querySelectorAll('.nav-menu a, .btn');
 
     navLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             const targetId = link.getAttribute('href');
 
-            // Verifica se o clique foi para uma seção interna da página
             if (targetId && targetId.startsWith('#') && targetId.length > 1) {
                 event.preventDefault();
                 const targetElement = document.querySelector(targetId);
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* --- 2. AÇÃO NO HEADER (SOMBRA AO ROLAR A PÁGINA) --- */
+    /* --- 2. DESTACAR HEADER AO ROLAR --- */
     const header = document.querySelector('header');
 
     window.addEventListener('scroll', () => {
@@ -41,8 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- 3. ANIMAÇÕES DE ENTRADA (EXPERIÊNCIA VIVA) --- */
-    const animatableElements = document.querySelectorAll('.card, .alert-card, .section-title');
+    /* --- 3. INTERATIVIDADE DOS FLASHCARDS --- */
+    const flashcards = document.querySelectorAll('.flashcard');
+
+    flashcards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Alterna a classe 'flipped' para disparar o giro 3D do CSS
+            card.classList.toggle('flipped');
+        });
+    });
+
+    /* --- 4. ANIMAÇÕES DE ENTRADA AO ROLAR --- */
+    const cardsAndTitles = document.querySelectorAll('.card, .alert-card, .flashcard');
+
+    cardsAndTitles.forEach(element => {
+        element.classList.add('animated-element');
+    });
 
     const observerOptions = {
         root: null,
@@ -52,32 +65,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const elementObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Adiciona a classe que ativa a animação configurada no CSS
                 entry.target.classList.add('animated-visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    animatableElements.forEach(element => {
+    cardsAndTitles.forEach(element => {
         elementObserver.observe(element);
     });
 
-    /* --- 4. VALIDAÇÃO INTELIGENTE DE FORMULÁRIO --- */
-    const form = document.querySelector('#contact-form');
+    /* --- 5. VALIDAÇÃO INTELIGENTE DO FORMULÁRIO DE CONTATO --- */
+    const contactForm = document.querySelector('#contact-form');
 
-    if (form) {
-        form.addEventListener('submit', (event) => {
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            // Captura os campos
             const nameInput = document.querySelector('#input-name');
             const emailInput = document.querySelector('#input-email');
             const messageInput = document.querySelector('#input-message');
 
             let isValid = true;
 
-            // Validação simples de nome
+            // Validação de Nome
             if (!nameInput || nameInput.value.trim() === '') {
                 isValid = false;
                 nameInput.classList.add('input-error');
@@ -85,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameInput.classList.remove('input-error');
             }
 
-            // Validação de e-mail com Expressão Regular (Regex)
+            // Validação de E-mail por RegEx
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailInput || !emailPattern.test(emailInput.value.trim())) {
                 isValid = false;
@@ -94,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 emailInput.classList.remove('input-error');
             }
 
-            // Validação do campo de mensagem
+            // Validação de Mensagem
             if (!messageInput || messageInput.value.trim() === '') {
                 isValid = false;
                 messageInput.classList.add('input-error');
@@ -102,12 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageInput.classList.remove('input-error');
             }
 
-            // Ação com base na validação
+            // Ação pós-validação
             if (isValid) {
-                alert('Mensagem enviada com sucesso! Agradecemos o seu contato com o projeto AGRINHO 2026.');
-                form.reset();
+                alert('Mensagem enviada com sucesso! Obrigado pelo contato com o projeto AGRINHO 2026.');
+                contactForm.reset();
             } else {
-                alert('Por favor, preencha corretamente todos os campos destacados.');
+                alert('Por favor, preencha corretamente os campos em destaque vermelho.');
             }
         });
     }
