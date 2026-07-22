@@ -246,7 +246,7 @@ section {
     margin-bottom: 10px;
 }
 
-/* --- FLASHCARDS INTERATIVOS (EFEITO 3D) --- */
+/* --- FLASHCARDS INTERATIVOS (EFEITO 3D CORRIGIDO) --- */
 .flashcard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -273,15 +273,19 @@ section {
     border-radius: 15px;
 }
 
+/* Força a rotação limpa quando o JS adiciona a classe flipped */
 .flashcard.flipped .flashcard-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) !important;
 }
 
 .flashcard-front, .flashcard-back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
