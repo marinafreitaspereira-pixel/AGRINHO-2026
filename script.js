@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* --- 4. ANIMAÇÕES DE ENTRADA AO ROLAR --- */
-    const cardsAndTitles = document.querySelectorAll('.card, .alert-card, .flashcard');
+   /* --- 4. ANIMAÇÕES DE ENTRADA AO ROLAR (EXCETO FLASHCARDS PARA NÃO CONFLITAR) --- */
+    const cardsAndTitles = document.querySelectorAll('.card, .alert-card');
 
     cardsAndTitles.forEach(element => {
         element.classList.add('animated-element');
